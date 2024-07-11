@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Echecs</title>
+		<meta charset="utf-8">
+		<body bgcolor=black>
+		<body text=white>
+		<body link=green>
+		
+	</head>
+	<body>
+		<h1 align="center">INTRODUCTION AUX ECHECS</h1>
+		<h2>Comment jouer ?</h2>
+			<p>Les Échecs sont un jeu de stratégie où deux joueurs s'affrontent sur 
+			un plateau de <em>64 cases</em>, alternativement claires et sombres. Chaque joueur 
+			dispose de <em>16 pièces</em> au début du jeu, comprenant un roi, une dame, deux 
+			tours, deux fous, deux cavaliers et huit pions.</p>
+			</br>
+			<div align="center">
+				<img title="Un jeu d'echec" src="echecs_presentation.jpeg" 
+				alt="Un jeu d'echec" width="600px">
+			</div>
+		
+		<p>Voici les règles principales :</p>
+		<ol>
+			<li><strong>But du jeu :</strong> Le but est de mettre le roi adverse en échec et mat, 
+			ce qui signifie que le roi est menacé de capture et qu'il n'existe aucun 
+			moyen d'échapper à cette menace.</li>
+			<li><strong>Déplacement des pièces :</strong>
+			<ul>
+				<li>Le <ins>roi</ins> peut se déplacer d'une case dans n'importe quelle 
+				direction.</li>
+				<li>La <ins>dame</ins> peut se déplacer horizontalement, verticalement et en 
+				diagonale sur n'importe quel nombre de cases.</li>
+				<li>La <ins>tour</ins> se déplace horizontalement ou verticalement sur 
+				n'importe quel nombre de cases.</li>
+				<li>Le <ins>fou</ins> se déplace en diagonale sur n'importe quel nombre de 
+				cases.</li>
+				<li>Le <ins>cavalier</ins> se déplace en L : deux cases dans une direction et 
+				une case perpendiculaire à cette direction.</li>
+				<li>Le <ins>pion</ins> se déplace droit devant lui d'une case, sauf lors de son 
+				premier mouvement où il peut avancer de deux cases. Il capture en 
+				diagonale.</li>
+			</ul>
+			<li><strong>Règles spéciales :</strong>
+			<ul>
+				<li>Le <ins>roque</ins> est un mouvement spécial entre le roi et l'une des 
+				tours, permettant de protéger le roi tout en développant la 
+				tour.</li>
+				<li>La <ins>prise en passant</ins> est une règle spéciale qui permet à un pion 
+				de capturer un pion adverse qui vient de se déplacer de deux cases 
+				à partir de sa position initiale.</li>
+			</ul>
+			<li><strong>Promotion :</strong> Lorsqu'un pion atteint la dernière rangée de 
+			l'adversaire, il peut être promu en une autre pièce (sauf le roi). La 
+			promotion est souvent choisie comme une dame, mais peut également être 
+			une tour, un fou ou un cavalier.</li>
+			<li><strong>Pat :</strong> Si un joueur ne peut pas faire un mouvement légal et que son 
+			roi n'est pas en échec, la partie se termine par un match nul appelé 
+			pat.</li>
+			<li><strong>Échec et mat :</strong> Lorsqu'un joueur place le roi adverse dans une 
+			position où il ne peut pas éviter d'être capturé (échec) et où aucun 
+			autre coup légal ne peut sauver le roi (mat), la partie est terminée et 
+			le joueur qui a mis le roi en échec et mat remporte la partie.</li>
+		</ol>
+		<tt>Les Échecs sont un jeu de stratégie profond qui exige à la fois 
+		anticipation, calcul et une bonne connaissance des principes tactiques et 
+		positionnels. Chaque partie est unique, offrant des possibilités infinies 
+		de développement et de combinaisons.</tt>
+		
+		<h3>Lire un échiquier</h3>
+		<p>Dans un échiquier, chaque case est identifiée par une lettre 
+		(<strong>a</strong> à <strong>h</strong>) et un chiffre (<strong>1</strong> 
+		à <strong>8</strong>), formant des coordonnées (par exemple ici, la tour 
+		est en b8). Les pièces sont représentées par des symboles spécifiques.</p>
+		<img title="Un échiquier et ses coordonées" src="echequier.png" alt="Un échiquier et ses coordonées" width="400 px">
+		
+		<h3>Fonctionnement des elos</h3>
+		<p>Le système Elo est une méthode de classement utilisée pour évaluer le niveau 
+		relatif des joueurs d'échecs. Chaque joueur commence avec un Elo de base (souvent 
+		1200 pour les débutants).</p>
+		<ul>
+			<li>Après chaque partie, le Elo des joueurs est ajusté en fonction du résultat.
+			La différence de Elo entre les deux joueurs détermine l'ampleur de l'ajustement.</li>
+			<li>Si un joueur de Elo inférieur bat un joueur de Elo supérieur, il gagne plus 
+			de points que s'il bat un joueur de Elo similaire ou inférieur. Le joueur de Elo 
+			supérieur perd plus de points en cas de défaite contre un joueur de Elo inférieur.</li>
+		</ul>
+		<p>Les niveaux en fonction de l'Elo peuvent varier légèrement selon les fédérations 
+		et les organisations, mais voici une classification générale souvent utilisé dans
+		le monde des échecs :</p>
+		<ul>
+			<li>Moins de 1000 Elo : Débutant</li>
+			<li>1000-1400 Elo : Joueur occasionnel</li>
+			<li>1400-1600 Elo : Joueur intermédiaire</li>
+			<li>1600-1800 Elo : Joueur Avancé</li>
+			<li>1800-2000 Elo : Expert
+			<li>2000-2200 Elo : Maitre FIDE (Federation Internationale des Echecs)</li>
+			<li>2200-2400 Elo : Maitre International</li>
+			<li>2400-2600 Elo : Grand Maitre International</li>
+			<li>2600+ Elo : Super Grand Maitre</li>
+		</ul>
+			
+		
+		<h2>Quelques exemples d'ouverture</h2>
+			<div>
+				<table border=1>
+						<th>Ouverture</th>
+						<th>Coups</th>
+					<tr>
+						<td>Défense Française</td>
+						<td>1.e4 e6 2.d4 d5</td>
+					</tr>
+					<tr>
+						<td>Défense Scandinave</td>
+						<td>1.e4 d5 2.e5 Be6</td>
+					</tr>
+					<tr>
+						<td>Sicilienne</td>
+						<td>1.e4 c5 2.Kf3 d6 3.d4</td>
+					</tr>
+					<tr>
+						<td>Défense Petrov</td>
+						<td>1.e4 e5 2.Kf3 Kf6</td>
+					</tr>
+					<tr>
+						<td>Caro-Kann</td>
+						<td>1.e4 c6 2.d4 d5</td>
+					</tr>
+					<tr>
+						<td>Gambit Dame</td>
+						<td>1.d4 d5 2.c4</td>
+					</tr>
+					<tr>
+						<td>L'italienne</td>
+						<td>1.e4 e5 2.Kf3 Kc6 3.Bc4</td>
+					</tr>
+					<tr>
+						<td>L'espagnol</td>
+						<td>1.e4 e5 2.Kf3 Kc6 3.Bb5</td>
+					</tr>
+				</table> </br>
+			</div>
+				
+			<figure>
+				<img title="Ouverture Sicilienne" src="sicilienne.jpg" 
+				alt="Ouverture Sicilienne" width="300px"/>
+				<figcaption><ins>Exemple d'une ouverture Sicilienne</ins></figcaption>
+				</br>
+				
+				<img title="Ouverture Caro-Kann" src="caro-Kann.jpg" 
+				alt="Ouverture Caro-Kann" width="300px"/>
+				<figcaption><ins>Exemple d'une ouverture Caro-Kann</ins></figcaption>
+				</br>
+				
+				<img title="Ouverture Gambit Dame" src="gambit_dame.png" 
+				alt="Ouverture Gambit Dame" width="300px"/>
+				<figcaption><ins>Exemple d'une ouverture Gambit de la Dame</ins></figcaption>
+				</br>
+			</figure>
+			
+		<h2>Parmis les grands joueurs d'echecs</h2>
+			<div>
+				<table border=2 title="Bobby Fischer est né le 9 mars 1943 aux Etats-Unis d'Amérique. Il commence à jouer aux echecs à l'âge de 6 ans et devient Champion des Etats-Unis en 1957.A ce jour, son elo est de 2785 et il est considéré comme Grand Maitre International.">	
+					<tr>
+						<td>Nom</td>
+						<td>Bobby Fischer</td>
+					</tr>
+					<tr>
+						<td>Naissance</td>
+						<td>9 mars 1943</td>
+					</tr>
+					<tr>
+						<td>Debuts aux echecs</td>
+						<td>6 ans</td>
+					</tr>
+					<tr>
+						<td>Première victoire notable</td>
+						<td>Champion des Etats-Unis, 1957</td>
+					</tr>
+					<tr>
+						<td>Dernier elo officiel</td>
+						<td>2785</td>
+					</tr>
+					<tr>
+						<td>Dernier statut officiel</td>
+						<td>Grand Maitre International</td>
+					</tr>
+				</table> </br>
+				<table border=2 title="Judith Polgar est née le 23 juillet 1976 en Hongrie. Elle commence à jouer aux echecs à l'âge de 5 ans et devient Grand Maitre Internationale en 1991.A ce jour, son elo est de 2735.">
+					<tr>
+						<td>Nom</td>
+						<td>Judith Polgar</td>
+					</tr>
+					<tr>
+						<td>Naissance</td>
+						<td>23 juillet 1976</td>
+					</tr>
+					<tr>
+						<td>Debuts aux echecs</td>
+						<td>5 ans</td>
+					</tr>
+					<tr>
+						<td>Première victoire notable</td>
+						<td>Grand Maitre Internationale, 1991</td>
+					</tr>
+					<tr>
+						<td>Dernier elo officiel</td>
+						<td>2735</td>
+					</tr>
+					<tr>
+						<td>Dernier statut officiel</td>
+						<td>Grand Maitre International</td>
+					</tr>
+				</table> </br>
+				<table border=2 title="Ding Liren est né le 24 octobre 1992 en Chine.Il commence à jouer aux echecs à l'âge de 4 ans et devient Champion National de Chine en 2009.A ce jour, son elo est de 2780 et il est considéré comme Grand Maitre Internationalet Champion du Monde depuis 2023.">
+					<tr>
+						<td>Nom</td>
+						<td>Ding Liren</td>
+					</tr>
+					<tr>
+						<td>Date de naissance</td>
+						<td>24 octobre 1992</td>
+					</tr>
+					<tr>
+						<td>Debuts aux echecs</td>
+						<td>4 ans</td>
+					</tr>
+					<tr>
+						<td>Première victoire notable</td>
+						<td>Champion National de Chine, 2009</td>
+					</tr>
+					<tr>
+						<td>Dernier elo officiel</td>
+						<td>2780</td>
+					</tr>
+					<tr>
+						<td>Dernier statut officiel</td>
+						<td>Grand Maitre International, Champion du Monde </td>
+					</tr>
+				</table> </br>
+			</div>
+			
+			<h2 align="center">En savoir plus</h2>
+			<p align="center">Jouer, apprendre et rejoindre une communauté en ligne : 
+			<a href="https://www.chess.com/">chess.com</a>
+			<a href="https://lichess.org/">lichess</a></p>
+			<p align="center">Quelques chaines youtube consacrées aux echecs :
+			<a href="https://www.youtube.com/@ChessNetwork">ChessNetwork</a>
+			<a href="https://www.youtube.com/@eric-rosen">Eric Rosen</a>
+			<a href="https://www.youtube.com/user/thechesswebsite">thechesswebsite</a></p>
+			<p align="center">Quelques sites web consacrés aux echecs :
+			<a href="https://www.apprendre-les-echecs-24h.com/blog/">Apprendre les echecs en 24h</a>
+			<a href="https://www.apprendrelesechecs.com/blog/">apprendrelesechecs.com</a>
+			<a href="https://chessforallages.blogspot.com/">Chess for All Ages</a></p>
+				
+					
+	</body>
+</html>
